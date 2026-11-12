@@ -40,7 +40,7 @@
       background: linear-gradient(135deg, #3b126b, #762bd1 55%, #b24be8);
     }
 
-    header { padding: 18px 0; overflow: hidden; }
+    header { padding: 18px 0; }
 
     nav {
       display: flex;
@@ -54,23 +54,10 @@
       font-size: 1.1rem;
     }
 
-    /* Contenedor con movimiento */
     .nav-links {
       display: flex;
       gap: 22px;
       align-items: center;
-    }
-
-    .nav-movimiento {
-      display: inline-block;
-      white-space: nowrap;
-      animation: moverBarra 8s linear infinite;
-    }
-
-    @keyframes moverBarra {
-      0% { transform: translateX(0); }
-      50% { transform: translateX(10px); }
-      100% { transform: translateX(0); }
     }
 
     .boton {
@@ -157,6 +144,7 @@
       border-radius: 14px;
       margin: 18px 0;
       line-height: 1.8;
+      font-weight: 600;
     }
 
     .ancho {
@@ -230,7 +218,7 @@
       <a class="marca" href="#">Córdoba Préstamos MX</a>
       <div class="nav-links">
         <a href="#como-funciona">Cómo funciona</a>
-        <a href="#opciones" class="nav-movimiento">Monto a elegir</a>
+        <a href="#opciones">Opciones</a>
         <a class="boton" href="#opciones">Ver opciones</a>
       </div>
     </nav>
@@ -243,7 +231,7 @@
           <span class="etiqueta">SENCILLO Y CLARO</span>
           <h1>Una opción de préstamo a tu medida.</h1>
           <p>Explora montos y plazos estimados. Revisa las condiciones antes de enviar una solicitud.</p>
-          <a class="boton" href="#calculadora">Calcular mi pago</a>
+          <a class="boton" href="#calculadora">Monto a elegir</a>
         </div>
 
         <div class="tarjeta" id="calculadora">
@@ -259,7 +247,7 @@
             <option value="12">12 meses</option>
           </select>
 
-          <div class="resultado" id="resultado" aria-live="polite"></div>
+          <div class="resultado" id="resultado" aria-live="polite">Pago estimado: $1,833 / mes</div>
           <a class="boton ancho" href="#opciones">Continuar</a>
           <p style="font-size:.78rem;color:#665775">
             Estimación ilustrativa; no representa una oferta ni garantiza aprobación.
@@ -332,5 +320,33 @@
       <p>© Córdoba Préstamos MX. Todos los derechos reservados.</p>
     </div>
   </footer>
+
+  <script>
+    const inputMonto = document.getElementById('monto');
+    const montoTexto = document.getElementById('montoTexto');
+    const selectPlazo = document.getElementById('plazo');
+    const resultado = document.getElementById('resultado');
+
+    function actualizarCalculo() {
+      const valor = parseInt(inputMonto.value);
+      const meses = parseInt(selectPlazo.value);
+      
+      // Actualiza el texto del monto con formato de dinero
+      montoTexto.textContent = '$' + valor.toLocaleString('es-MX') + ' MXN';
+
+      // Cálculo ilustrativo simple con interés base
+      const tasaMensual = 0.035;
+      const totalConInteres = valor * (1 + (tasaMensual * meses));
+      const pagoMensual = totalConInteres / meses;
+
+      resultado.textContent = `Pago estimado: $${Math.round(pagoMensual).toLocaleString('es-MX')} / mes`;
+    }
+
+    inputMonto.addEventListener('input', actualizarCalculo);
+    selectPlazo.addEventListener('change', actualizarCalculo);
+
+    // Ejecutar al cargar la página
+    actualizarCalculo();
+  </script>
 </body>
 </html>
