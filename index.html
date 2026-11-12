@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -41,7 +40,7 @@
       background: linear-gradient(135deg, #3b126b, #762bd1 55%, #b24be8);
     }
 
-    header { padding: 18px 0; }
+    header { padding: 18px 0; overflow: hidden; }
 
     nav {
       display: flex;
@@ -55,10 +54,23 @@
       font-size: 1.1rem;
     }
 
+    /* Contenedor con movimiento */
     .nav-links {
       display: flex;
       gap: 22px;
       align-items: center;
+    }
+
+    .nav-movimiento {
+      display: inline-block;
+      white-space: nowrap;
+      animation: moverBarra 8s linear infinite;
+    }
+
+    @keyframes moverBarra {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(10px); }
+      100% { transform: translateX(0); }
     }
 
     .boton {
@@ -194,12 +206,13 @@
       font-size: .92rem;
     }
 
-    footer { padding: 28px 0; }
+    footer { padding: 28px 0; text-align: center; }
 
     footer p {
       color: #f0e3fa;
       font-size: .88rem;
       line-height: 1.6;
+      margin: 0;
     }
 
     @media (max-width: 760px) {
@@ -217,7 +230,7 @@
       <a class="marca" href="#">Córdoba Préstamos MX</a>
       <div class="nav-links">
         <a href="#como-funciona">Cómo funciona</a>
-        <a href="#opciones">Opciones</a>
+        <a href="#opciones" class="nav-movimiento">Monto a elegir</a>
         <a class="boton" href="#opciones">Ver opciones</a>
       </div>
     </nav>
@@ -315,5 +328,9 @@
   </main>
 
   <footer>
-    <
-```
+    <div class="contenedor">
+      <p>© Córdoba Préstamos MX. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
