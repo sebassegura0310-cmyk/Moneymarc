@@ -3,350 +3,201 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#3b126b">
-  <title>Córdoba Préstamos MX</title>
-
+  <meta name="theme-color" content="#2b0d52">
+  <title>Créditos Rápidos y Seguros</title>
+  
   <style>
     :root {
-      --verde: #3b126b;
-      --lima: #f0c8ff;
-      --fondo: #f7f1ff;
-      --texto: #251333;
-      --blanco: #fff;
-      --morado-medio: #762bd1;
-      --morado-claro: #b24be8;
+      --bg-gradient: linear-gradient(135deg, #1f0838 0%, #3b126b 50%, #5a1fa8 100%);
+      --card-bg: rgba(255, 255, 255, 0.07);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --text-color: #f3eafa;
+      --text-muted: #d0bce6;
+      --accent-color: #00ffcc;
+      --btn-bg-1: linear-gradient(135deg, #7b2cbf, #9d4edd);
+      --btn-bg-2: linear-gradient(135deg, #48cae4, #0077b6);
+      --blanco: #ffffff;
     }
 
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
-      margin: 0;
-      color: var(--texto);
-      background: var(--fondo);
-      font-family: Inter, system-ui, Arial, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
     }
 
-    a { color: inherit; text-decoration: none; }
-
-    .contenedor {
-      width: min(1120px, 92%);
-      margin: auto;
+    .landing-container {
+      width: 100%;
+      max-width: 480px;
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 28px;
+      padding: 36px 28px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    header, .hero, footer {
-      color: var(--blanco);
-      background: linear-gradient(135deg, #3b126b, #762bd1 55%, #b24be8);
+    /* Elemento decorativo de brillo superior */
+    .landing-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #b24be8, transparent);
     }
 
-    header { padding: 18px 0; }
-
-    nav {
+    .logo-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      justify-content: center;
+      font-size: 2.5rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      animation: flotar 3s ease-in-out infinite;
     }
 
-    .marca {
-      font-weight: 800;
-      font-size: 1.1rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 22px;
-      align-items: center;
-    }
-
-    .boton {
-      display: inline-block;
-      border: 0;
-      border-radius: 999px;
-      padding: 13px 20px;
-      background: linear-gradient(135deg, #f0c8ff, #ffd1ee);
-      color: #3b126b;
-      font-weight: 750;
-      cursor: pointer;
-      transition: transform .2s, opacity .2s;
-    }
-
-    .boton:hover {
-      transform: translateY(-2px);
-      opacity: .9;
-    }
-
-    .hero { padding: 72px 0 88px; }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 42px;
-      align-items: center;
-    }
-
-    .etiqueta {
-      color: var(--lima);
-      font-weight: 700;
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
     }
 
     h1 {
-      font-size: clamp(2.5rem, 6vw, 4.8rem);
-      line-height: 1.02;
-      margin: 16px 0;
-    }
-
-    .hero p {
-      color: #f0e3fa;
-      line-height: 1.7;
-      max-width: 540px;
-    }
-
-    .tarjeta {
-      background: var(--blanco);
-      color: var(--texto);
-      border: 1px solid #ead8fb;
-      border-radius: 24px;
-      padding: 26px;
-      box-shadow: 0 12px 35px #54208018;
-    }
-
-    label {
-      display: block;
-      font-weight: 700;
-      margin: 18px 0 8px;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #d8cedf;
-      border-radius: 12px;
-      font: inherit;
-    }
-
-    input[type="range"] {
-      padding: 0;
-      accent-color: #8b35cf;
-      cursor: pointer;
-    }
-
-    .monto {
-      color: #3b126b;
-      font-size: 1.8rem;
+      font-size: 2.2rem;
       font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+      color: var(--blanco);
+      text-transform: uppercase;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
 
-    .resultado {
-      background: linear-gradient(135deg, #f3e6ff, #fceaff);
-      padding: 16px;
+    .descripcion {
+      font-size: 0.96rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      text-align: left;
+      background: rgba(0, 0, 0, 0.15);
+      padding: 16px 18px;
       border-radius: 14px;
-      margin: 18px 0;
-      line-height: 1.8;
-      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .ancho {
+    .botones-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .btn-solicitar {
+      display: block;
       width: 100%;
+      padding: 16px 20px;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--blanco);
+      text-decoration: none;
       text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      border: none;
+      position: relative;
+      overflow: hidden;
     }
 
-    section { padding: 70px 0; }
-
-    h2 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      margin: 0 0 14px;
+    .btn-1 {
+      background: linear-gradient(135deg, #7209b7, #b5179e);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .subtitulo {
-      color: #665775;
-      line-height: 1.7;
+    .btn-2 {
+      background: linear-gradient(135deg, #4361ee, #3a0ca3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .pasos, .opciones {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 28px;
+    .btn-solicitar:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+      opacity: 0.95;
     }
 
-    .caja {
-      background: var(--blanco);
-      border: 1px solid #ead8fb;
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 12px 35px #54208018;
+    .btn-solicitar:active {
+      transform: translateY(-1px);
     }
 
-    .numero {
-      color: #8b35cf;
-      font-size: 1.5rem;
-      font-weight: 800;
+    .seguridad {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: #b8c1ec;
+      margin-top: 10px;
+      font-weight: 500;
     }
 
-    .aviso {
-      background: #fff8df;
-      border-left: 4px solid #d0a400;
-      padding: 16px;
-      border-radius: 10px;
-      line-height: 1.6;
-      font-size: .92rem;
-    }
-
-    footer { padding: 28px 0; text-align: center; }
-
-    footer p {
-      color: #f0e3fa;
-      font-size: .88rem;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    @media (max-width: 760px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .nav-links a:not(.boton) { display: none; }
-      .pasos, .opciones { grid-template-columns: 1fr; }
-      .hero { padding: 52px 0 65px; }
+    footer {
+      margin-top: 24px;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.4);
+      text-align: center;
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <nav class="contenedor">
-      <a class="marca" href="#">Córdoba Préstamos MX</a>
-      <div class="nav-links">
-        <a href="#como-funciona">Cómo funciona</a>
-        <a href="#opciones">Opciones</a>
-        <a class="boton" href="#opciones">Ver opciones</a>
-      </div>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="contenedor hero-grid">
-        <div>
-          <span class="etiqueta">SENCILLO Y CLARO</span>
-          <h1>Una opción de préstamo a tu medida.</h1>
-          <p>Explora montos y plazos estimados. Revisa las condiciones antes de enviar una solicitud.</p>
-          <a class="boton" href="#calculadora">Monto a elegir</a>
-        </div>
+  <div class="landing-container">
+    <!-- Icono superior animado -->
+    <div class="logo-icon">
+      💸
+    </div>
 
-        <div class="tarjeta" id="calculadora">
-          <h2 style="font-size:1.5rem">Haz una estimación</h2>
-          <label for="monto">¿Cuánto necesitas?</label>
-          <div class="monto" id="montoTexto">$10,000 MXN</div>
-          <input id="monto" type="range" min="1000" max="50000" step="500" value="10000">
+    <h1>Créditos</h1>
 
-          <label for="plazo">Plazo</label>
-          <select id="plazo">
-            <option value="3">3 meses</option>
-            <option value="6" selected>6 meses</option>
-            <option value="12">12 meses</option>
-          </select>
+    <div class="descripcion">
+      Solicita tu crédito sin ningún tipo de pago inicial o anticipado. Dale click al botón <strong>SOLICITAR</strong> en cualquiera de las dos opciones, marca la cantidad que deseas y sigue los pasos. Al final recibirán en pantalla las opciones disponibles para pedir el crédito. ¡MUCHO ÉXITO!
+    </div>
 
-          <div class="resultado" id="resultado" aria-live="polite">Pago estimado: $1,833 / mes</div>
-          <a class="boton ancho" href="#opciones">Continuar</a>
-          <p style="font-size:.78rem;color:#665775">
-            Estimación ilustrativa; no representa una oferta ni garantiza aprobación.
-          </p>
-        </div>
-      </div>
-    </section>
+    <div class="botones-container">
+      <!-- Cambia los enlaces "#enlace-opcion-1" por tus links reales de destino -->
+      <a href="#enlace-opcion-1" class="btn-solicitar btn-1">SOLICITAR #1</a>
+      <a href="#enlace-opcion-2" class="btn-solicitar btn-2">SOLICITAR #2</a>
+    </div>
 
-    <section id="como-funciona">
-      <div class="contenedor">
-        <h2>¿Cómo funciona?</h2>
-        <p class="subtitulo">Un proceso sencillo, con información clara en cada paso.</p>
-        <div class="pasos">
-          <article class="caja">
-            <span class="numero">01</span>
-            <h3>Elige un monto</h3>
-            <p>Usa la calculadora para explorar una estimación.</p>
-          </article>
-          <article class="caja">
-            <span class="numero">02</span>
-            <h3>Revisa las condiciones</h3>
-            <p>Consulta tasas, comisiones, plazo y costo total antes de solicitar.</p>
-          </article>
-          <article class="caja">
-            <span class="numero">03</span>
-            <h3>Envía tu solicitud</h3>
-            <p>Continúa mediante el enlace oficial que se indique.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="opciones" style="background:#f0e7fa">
-      <div class="contenedor">
-        <h2>Opciones disponibles</h2>
-        <p class="subtitulo">Agrega tus enlaces oficiales cuando estén listos.</p>
-        <div class="opciones">
-          <article class="caja">
-            <h3>Opción de préstamo 1</h3>
-            <p>Desde 3.5% mensual, solo como ejemplo ilustrativo. Sujeto a evaluación y condiciones.</p>
-            <a class="boton" href="https://ejemplo.com/enlace-1">Solicitar opción 1</a>
-          </article>
-          <article class="caja">
-            <h3>Opción de préstamo 2</h3>
-            <p>Completa aquí la tasa, el plazo, las comisiones y el CAT reales antes de publicar.</p>
-            <a class="boton" href="https://ejemplo.com/enlace-2">Solicitar opción 2</a>
-          </article>
-          <article class="caja">
-            <h3>¿Tienes dudas?</h3>
-            <p>Reemplaza este botón con tu enlace oficial de contacto o atención.</p>
-            <a class="boton" href="https://ejemplo.com/contacto">Contactar</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="contenedor">
-        <div class="aviso">
-          <strong>Importante:</strong> la tasa de 3.5% mensual es únicamente ilustrativa.
-          Antes de publicar, reemplázala por las condiciones reales e informa tasas,
-          comisiones, CAT y costo total del crédito.
-        </div>
-      </div>
-    </section>
-  </main>
+    <div class="seguridad">
+      <span>🔒</span> Proceso 100% seguro y sin pagos previos.
+    </div>
+  </div>
 
   <footer>
-    <div class="contenedor">
-      <p>© Córdoba Préstamos MX. Todos los derechos reservados.</p>
-    </div>
+    Plataforma de comparación de créditos • Todos los derechos reservados
   </footer>
 
-  <script>
-    const inputMonto = document.getElementById('monto');
-    const montoTexto = document.getElementById('montoTexto');
-    const selectPlazo = document.getElementById('plazo');
-    const resultado = document.getElementById('resultado');
-
-    function actualizarCalculo() {
-      const valor = parseInt(inputMonto.value);
-      const meses = parseInt(selectPlazo.value);
-      
-      // Actualiza el texto del monto con formato de dinero
-      montoTexto.textContent = '$' + valor.toLocaleString('es-MX') + ' MXN';
-
-      // Cálculo ilustrativo simple con interés base
-      const tasaMensual = 0.035;
-      const totalConInteres = valor * (1 + (tasaMensual * meses));
-      const pagoMensual = totalConInteres / meses;
-
-      resultado.textContent = `Pago estimado: $${Math.round(pagoMensual).toLocaleString('es-MX')} / mes`;
-    }
-
-    inputMonto.addEventListener('input', actualizarCalculo);
-    selectPlazo.addEventListener('change', actualizarCalculo);
-
-    // Ejecutar al cargar la página
-    actualizarCalculo();
-  </script>
 </body>
 </html>
