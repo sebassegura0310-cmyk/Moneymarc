@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,10 +9,13 @@
 
   <style>
     :root {
-      --morado: #3b126b;
+      --verde: #3b126b;
+      --lima: #f0c8ff;
       --fondo: #f7f1ff;
       --texto: #251333;
-      --blanco: #ffffff;
+      --blanco: #fff;
+      --morado-medio: #762bd1;
+      --morado-claro: #b24be8;
     }
 
     * { box-sizing: border-box; }
@@ -29,7 +33,7 @@
 
     .contenedor {
       width: min(1120px, 92%);
-      margin: 0 auto;
+      margin: auto;
     }
 
     header, .hero, footer {
@@ -47,25 +51,24 @@
     }
 
     .marca {
-      font-size: 1.1rem;
       font-weight: 800;
+      font-size: 1.1rem;
     }
 
     .nav-links {
       display: flex;
-      align-items: center;
       gap: 22px;
+      align-items: center;
     }
 
     .boton {
       display: inline-block;
-      padding: 13px 20px;
       border: 0;
       border-radius: 999px;
+      padding: 13px 20px;
       background: linear-gradient(135deg, #f0c8ff, #ffd1ee);
-      color: var(--morado);
+      color: #3b126b;
       font-weight: 750;
-      text-align: center;
       cursor: pointer;
       transition: transform .2s, opacity .2s;
     }
@@ -80,93 +83,80 @@
     .hero-grid {
       display: grid;
       grid-template-columns: 1.15fr .85fr;
-      align-items: center;
       gap: 42px;
+      align-items: center;
     }
 
     .etiqueta {
-      color: #f0c8ff;
+      color: var(--lima);
       font-weight: 700;
     }
 
     h1 {
-      margin: 16px 0;
       font-size: clamp(2.5rem, 6vw, 4.8rem);
       line-height: 1.02;
+      margin: 16px 0;
     }
 
     .hero p {
-      max-width: 540px;
       color: #f0e3fa;
       line-height: 1.7;
+      max-width: 540px;
     }
 
     .tarjeta {
-      padding: 26px;
-      border: 1px solid #ead8fb;
-      border-radius: 24px;
       background: var(--blanco);
       color: var(--texto);
+      border: 1px solid #ead8fb;
+      border-radius: 24px;
+      padding: 26px;
       box-shadow: 0 12px 35px #54208018;
     }
 
     label {
       display: block;
-      margin: 18px 0 8px;
       font-weight: 700;
+      margin: 18px 0 8px;
     }
 
-    select {
+    input, select {
       width: 100%;
       padding: 13px;
       border: 1px solid #d8cedf;
       border-radius: 12px;
-      background: white;
       font: inherit;
     }
 
+    input[type="range"] {
+      padding: 0;
+      accent-color: #8b35cf;
+      cursor: pointer;
+    }
+
     .monto {
-      color: var(--morado);
+      color: #3b126b;
       font-size: 1.8rem;
       font-weight: 800;
     }
 
-    /* Barra visible y fácil de arrastrar */
-    input[type="range"] {
-      display: block;
-      width: 100%;
-      height: 30px;
-      margin: 12px 0;
-      padding: 0;
-      accent-color: #8b35cf;
-      cursor: grab;
-      touch-action: pan-y;
-    }
-
-    input[type="range"]:active { cursor: grabbing; }
-
-    .rango-limites {
-      display: flex;
-      justify-content: space-between;
-      color: #665775;
-      font-size: .82rem;
-    }
-
     .resultado {
-      margin: 18px 0;
+      background: linear-gradient(135deg, #f3e6ff, #fceaff);
       padding: 16px;
       border-radius: 14px;
-      background: linear-gradient(135deg, #f3e6ff, #fceaff);
+      margin: 18px 0;
       line-height: 1.8;
     }
 
-    .ancho { width: 100%; }
+    .ancho {
+      width: 100%;
+      text-align: center;
+    }
 
     section { padding: 70px 0; }
 
     h2 {
-      margin: 0 0 14px;
       font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin: 0 0 14px;
     }
 
     .subtitulo {
@@ -182,10 +172,10 @@
     }
 
     .caja {
-      padding: 24px;
+      background: var(--blanco);
       border: 1px solid #ead8fb;
       border-radius: 18px;
-      background: var(--blanco);
+      padding: 24px;
       box-shadow: 0 12px 35px #54208018;
     }
 
@@ -196,12 +186,12 @@
     }
 
     .aviso {
-      padding: 16px;
-      border-left: 4px solid #d0a400;
-      border-radius: 10px;
       background: #fff8df;
-      font-size: .92rem;
+      border-left: 4px solid #d0a400;
+      padding: 16px;
+      border-radius: 10px;
       line-height: 1.6;
+      font-size: .92rem;
     }
 
     footer { padding: 28px 0; }
@@ -239,33 +229,15 @@
         <div>
           <span class="etiqueta">SENCILLO Y CLARO</span>
           <h1>Una opción de préstamo a tu medida.</h1>
-          <p>
-            Explora montos y plazos estimados. Revisa las condiciones antes
-            de enviar una solicitud.
-          </p>
+          <p>Explora montos y plazos estimados. Revisa las condiciones antes de enviar una solicitud.</p>
           <a class="boton" href="#calculadora">Calcular mi pago</a>
         </div>
 
         <div class="tarjeta" id="calculadora">
-          <h2 style="font-size: 1.5rem">Haz una estimación</h2>
-
+          <h2 style="font-size:1.5rem">Haz una estimación</h2>
           <label for="monto">¿Cuánto necesitas?</label>
-          <div class="monto" id="montoTexto" aria-live="polite">$10,000 MXN</div>
-
-          <input
-            id="monto"
-            type="range"
-            min="1000"
-            max="50000"
-            step="500"
-            value="10000"
-            aria-label="Selecciona el monto del préstamo"
-          >
-
-          <div class="rango-limites">
-            <span>$1,000 MXN</span>
-            <span>$50,000 MXN</span>
-          </div>
+          <div class="monto" id="montoTexto">$10,000 MXN</div>
+          <input id="monto" type="range" min="1000" max="50000" step="500" value="10000">
 
           <label for="plazo">Plazo</label>
           <select id="plazo">
@@ -275,10 +247,8 @@
           </select>
 
           <div class="resultado" id="resultado" aria-live="polite"></div>
-
           <a class="boton ancho" href="#opciones">Continuar</a>
-
-          <p style="font-size: .78rem; color: #665775">
+          <p style="font-size:.78rem;color:#665775">
             Estimación ilustrativa; no representa una oferta ni garantiza aprobación.
           </p>
         </div>
@@ -289,20 +259,17 @@
       <div class="contenedor">
         <h2>¿Cómo funciona?</h2>
         <p class="subtitulo">Un proceso sencillo, con información clara en cada paso.</p>
-
         <div class="pasos">
           <article class="caja">
             <span class="numero">01</span>
             <h3>Elige un monto</h3>
             <p>Usa la calculadora para explorar una estimación.</p>
           </article>
-
           <article class="caja">
             <span class="numero">02</span>
             <h3>Revisa las condiciones</h3>
             <p>Consulta tasas, comisiones, plazo y costo total antes de solicitar.</p>
           </article>
-
           <article class="caja">
             <span class="numero">03</span>
             <h3>Envía tu solicitud</h3>
@@ -312,25 +279,41 @@
       </div>
     </section>
 
-    <section id="opciones" style="background: #f0e7fa">
+    <section id="opciones" style="background:#f0e7fa">
       <div class="contenedor">
         <h2>Opciones disponibles</h2>
         <p class="subtitulo">Agrega tus enlaces oficiales cuando estén listos.</p>
-
         <div class="opciones">
           <article class="caja">
             <h3>Opción de préstamo 1</h3>
             <p>Desde 3.5% mensual, solo como ejemplo ilustrativo. Sujeto a evaluación y condiciones.</p>
             <a class="boton" href="https://ejemplo.com/enlace-1">Solicitar opción 1</a>
           </article>
-
           <article class="caja">
             <h3>Opción de préstamo 2</h3>
             <p>Completa aquí la tasa, el plazo, las comisiones y el CAT reales antes de publicar.</p>
             <a class="boton" href="https://ejemplo.com/enlace-2">Solicitar opción 2</a>
           </article>
-
           <article class="caja">
             <h3>¿Tienes dudas?</h3>
-            <p>Reemplaza este botón con
+            <p>Reemplaza este botón con tu enlace oficial de contacto o atención.</p>
+            <a class="boton" href="https://ejemplo.com/contacto">Contactar</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="contenedor">
+        <div class="aviso">
+          <strong>Importante:</strong> la tasa de 3.5% mensual es únicamente ilustrativa.
+          Antes de publicar, reemplázala por las condiciones reales e informa tasas,
+          comisiones, CAT y costo total del crédito.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <
 ```
