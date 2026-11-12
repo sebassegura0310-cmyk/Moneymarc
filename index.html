@@ -6,120 +6,40 @@
   <meta name="theme-color" content="#102d25">
   <title>Córdoba Préstamos MX</title>
   <style>
-    :root {
-      --verde: #102d25;
-      --lima: #d7f36a;
-      --fondo: #f5f6ef;
-      --texto: #18231e;
-      --blanco: #fff;
-    }
+   :root {
+  --verde: #3b126b;
+  --lima: #f0c8ff;
+  --fondo: #f7f1ff;
+  --texto: #251333;
+  --blanco: #fff;
+}
 
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      color: var(--texto);
-      background: var(--fondo);
-      font-family: Inter, system-ui, Arial, sans-serif;
-    }
-    a { color: inherit; text-decoration: none; }
-    .contenedor { width: min(1120px, 92%); margin: auto; }
+/* Degradado morado en la cabecera y el bloque principal */
+header,
+.hero,
+footer {
+  background: linear-gradient(135deg, #3b126b, #762bd1 55%, #b24be8);
+}
 
-    header {
-      background: var(--verde);
-      color: var(--blanco);
-      padding: 18px 0;
-    }
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .marca { font-weight: 800; font-size: 1.1rem; }
-    .nav-links { display: flex; gap: 22px; align-items: center; }
-    .boton {
-      display: inline-block;
-      border: 0;
-      border-radius: 999px;
-      padding: 13px 20px;
-      background: var(--lima);
-      color: var(--verde);
-      font-weight: 750;
-      cursor: pointer;
-      transition: transform .2s, opacity .2s;
-    }
-    .boton:hover { transform: translateY(-2px); opacity: .9; }
+/* Tarjetas con un toque lila */
+.tarjeta,
+.caja {
+  border: 1px solid #ead8fb;
+  box-shadow: 0 12px 35px #54208018;
+}
 
-    .hero { background: var(--verde); color: white; padding: 72px 0 88px; }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 42px;
-      align-items: center;
-    }
-    .etiqueta { color: var(--lima); font-weight: 700; }
-    h1 { font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.02; margin: 16px 0; }
-    .hero p { color: #d4ded8; line-height: 1.7; max-width: 540px; }
-    .tarjeta {
-      background: white;
-      color: var(--texto);
-      border-radius: 24px;
-      padding: 26px;
-      box-shadow: 0 18px 55px #0002;
-    }
-    label { display: block; font-weight: 700; margin: 18px 0 8px; }
-    input, select {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #d8ded9;
-      border-radius: 12px;
-      font: inherit;
-    }
-    input[type="range"] { padding: 0; accent-color: var(--verde); }
-    .monto { color: var(--verde); font-size: 1.8rem; font-weight: 800; }
-    .resultado {
-      background: #f1f5e6;
-      padding: 16px;
-      border-radius: 14px;
-      margin: 18px 0;
-      line-height: 1.7;
-    }
-    .ancho { width: 100%; text-align: center; }
+.resultado {
+  background: linear-gradient(135deg, #f3e6ff, #fceaff);
+}
 
-    section { padding: 70px 0; }
-    h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 14px; }
-    .subtitulo { color: #59655e; line-height: 1.7; }
-    .pasos, .opciones {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 28px;
-    }
-    .caja {
-      background: white;
-      border-radius: 18px;
-      padding: 24px;
-      border: 1px solid #e8ebe4;
-    }
-    .numero { color: #65831c; font-size: 1.5rem; font-weight: 800; }
+.boton {
+  background: linear-gradient(135deg, #f0c8ff, #ffd1ee);
+  color: #3b126b;
+}
 
-    .aviso {
-      background: #fff8df;
-      border-left: 4px solid #d0a400;
-      padding: 16px;
-      border-radius: 10px;
-      line-height: 1.6;
-      font-size: .92rem;
-    }
-    footer { background: var(--verde); color: white; padding: 28px 0; }
-    footer p { color: #d4ded8; font-size: .88rem; line-height: 1.6; }
-
-    @media (max-width: 760px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .nav-links a:not(.boton) { display: none; }
-      .pasos, .opciones { grid-template-columns: 1fr; }
-      .hero { padding: 52px 0 65px; }
-    }
+input[type="range"] {
+  accent-color: #8b35cf;
+}
   </style>
 </head>
 <body>
