@@ -83,4 +83,183 @@
     h1 {
       font-size: 2.2rem;
       font-weight: 800;
-      letter-spacing
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+      color: var(--blanco);
+      text-transform: uppercase;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .descripcion {
+      font-size: 0.96rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+      text-align: left;
+      background: rgba(0, 0, 0, 0.15);
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .aprobacion-live {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(0, 255, 136, 0.1);
+      border: 1px solid rgba(0, 255, 136, 0.25);
+      padding: 12px 14px;
+      border-radius: 12px;
+      margin-bottom: 22px;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      color: #e6fff2;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .aprobacion-live.oculto {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+
+    .monto-destacado {
+      color: #00ff88;
+      font-weight: 700;
+    }
+
+    .punto-verde {
+      width: 9px;
+      height: 9px;
+      background-color: #00ff88;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 8px #00ff88;
+      animation: pulso 1.5s infinite;
+    }
+
+    @keyframes pulso {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
+      70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(0, 255, 136, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+    }
+
+    .botones-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .btn-solicitar {
+      display: block;
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--blanco);
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-1 {
+      background: linear-gradient(135deg, #7209b7, #b5179e);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-2 {
+      background: linear-gradient(135deg, #4361ee, #3a0ca3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-solicitar:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+      opacity: 0.95;
+    }
+
+    .seguridad {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: #b8c1ec;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    footer {
+      margin-top: 24px;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.4);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="landing-container">
+    <div class="logo-icon">💸</div>
+
+    <h1>Créditos</h1>
+
+    <div class="descripcion">
+      Solicita tu crédito sin ningún tipo de pago inicial o anticipado. Dale click al botón <strong>SOLICITAR</strong> en cualquiera de las dos opciones, marca la cantidad que deseas y sigue los pasos. Al final recibirán en pantalla las opciones disponibles para pedir el crédito. ¡MUCHO ÉXITO!
+    </div>
+
+    <div class="aprobacion-live" id="bannerAprobacion">
+      <span class="punto-verde"></span>
+      <span id="textoAprobacion"><strong>María G.</strong> aprobada por <span class="monto-destacado">$4,500 MXN</span> hace 1 minuto</span>
+    </div>
+
+    <div class="botones-container">
+      <a href="#enlace-opcion-1" class="btn-solicitar btn-1">SOLICITAR #1</a>
+      <a href="#enlace-opcion-2" class="btn-solicitar btn-2">SOLICITAR #2</a>
+    </div>
+
+    <div class="seguridad">
+      <span>🔒</span> Proceso 100% seguro y sin pagos previos.
+    </div>
+  </div>
+
+  <footer>
+    Plataforma de comparación de créditos • Todos los derechos reservados
+  </footer>
+
+  <script>
+    const aprobaciones = [
+      { nombre: "María G.", genero: "aprobada", monto: "$4,500 MXN", tiempo: "hace 1 minuto" },
+      { nombre: "Carlos R.", genero: "aprobado", monto: "$6,000 MXN", tiempo: "hace unos segundos" },
+      { nombre: "Fernanda L.", genero: "aprobada", monto: "$3,000 MXN", tiempo: "hace 3 minutos" },
+      { nombre: "Jorge M.", genero: "aprobado", monto: "$5,500 MXN", tiempo: "hace 2 minutos" },
+      { nombre: "Sofía P.", genero: "aprobada", monto: "$2,500 MXN", tiempo: "hace 1 minuto" },
+      { nombre: "Alejandro T.", genero: "aprobado", monto: "$6,000 MXN", tiempo: "hace 4 minutos" },
+      { nombre: "Valeria S.", genero: "aprobada", monto: "$4,000 MXN", tiempo: "hace 2 minutos" },
+      { nombre: "Luis H.", genero: "aprobado", monto: "$5,000 MXN", tiempo: "hace 5 minutos" }
+    ];
+
+    let indice = 0;
+    const banner = document.getElementById("bannerAprobacion");
+    const texto = document.getElementById("textoAprobacion");
+
+    setInterval(() => {
+      banner.classList.add("oculto");
+
+      setTimeout(() => {
+        indice = (indice + 1) % aprobaciones.length;
+        const item = aprobaciones[indice];
+        texto.innerHTML = `<strong>${item.nombre}</strong> ${item.genero} por <span class="monto-destacado">${item.monto}</span> ${item.tiempo}`;
+        
+        banner.classList.remove("oculto");
+      }, 400);
+    }, 3500);
+  </script>
+
+</body>
+</html>
