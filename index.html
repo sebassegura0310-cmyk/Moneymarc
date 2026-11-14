@@ -213,14 +213,15 @@
       Solicita tu crédito sin ningún tipo de pago inicial o anticipado. Dale click al botón <strong>SOLICITAR</strong> en cualquiera de las dos opciones, marca la cantidad que deseas y sigue los pasos. Al final recibirán en pantalla las opciones disponibles para pedir el crédito. ¡MUCHO ÉXITO!
     </div>
 
+    <!-- Banner con mezcla de solicitudes y aprobaciones -->
     <div class="aprobacion-live" id="bannerAprobacion">
       <span class="punto-verde"></span>
-      <span id="textoAprobacion"><strong>María G.</strong> aprobada por <span class="monto-destacado">$4,500 MXN</span> hace 1 minuto</span>
+      <span id="textoAprobacion"><strong>María G.</strong> envió una solicitud por <span class="monto-destacado">$4,500 MXN</span> hace 1 minuto</span>
     </div>
 
     <div class="botones-container">
-      <a href="https://o.uvixs.com//tr?offer_id=7&aff_id=14" class="btn-solicitar btn-1">SOLICITAR #1</a>
-      <a href="https://o.uvixs.com//tr?offer_id=11&aff_id=14" class="btn-solicitar btn-2">SOLICITAR #2</a>
+      <a href="#enlace-opcion-1" class="btn-solicitar btn-1">SOLICITAR #1</a>
+      <a href="#enlace-opcion-2" class="btn-solicitar btn-2">SOLICITAR #2</a>
     </div>
 
     <div class="seguridad">
@@ -233,15 +234,15 @@
   </footer>
 
   <script>
-    const aprobaciones = [
-      { nombre: "María G.", genero: "aprobada", monto: "$4,500 MXN", tiempo: "hace 1 minuto" },
-      { nombre: "Carlos R.", genero: "aprobado", monto: "$6,000 MXN", tiempo: "hace unos segundos" },
-      { nombre: "Fernanda L.", genero: "aprobada", monto: "$3,000 MXN", tiempo: "hace 3 minutos" },
-      { nombre: "Jorge M.", genero: "aprobado", monto: "$5,500 MXN", tiempo: "hace 2 minutos" },
-      { nombre: "Sofía P.", genero: "aprobada", monto: "$2,500 MXN", tiempo: "hace 1 minuto" },
-      { nombre: "Alejandro T.", genero: "aprobado", monto: "$6,000 MXN", tiempo: "hace 4 minutos" },
-      { nombre: "Valeria S.", genero: "aprobada", monto: "$4,000 MXN", tiempo: "hace 2 minutos" },
-      { nombre: "Luis H.", genero: "aprobado", monto: "$5,000 MXN", tiempo: "hace 5 minutos" }
+    const actividades = [
+      { texto: "envió una solicitud por", nombre: "María G.", monto: "$4,500 MXN", tiempo: "hace 1 minuto" },
+      { texto: "fue aprobado por", nombre: "Carlos R.", monto: "$6,000 MXN", tiempo: "hace unos segundos" },
+      { texto: "inició su trámite por", nombre: "Fernanda L.", monto: "$3,000 MXN", tiempo: "hace 3 minutos" },
+      { texto: "recibió su crédito de", nombre: "Jorge M.", monto: "$5,500 MXN", tiempo: "hace 2 minutos" },
+      { texto: "envió una solicitud por", nombre: "Sofía P.", monto: "$2,500 MXN", tiempo: "hace 30 segundos" },
+      { texto: "fue aprobado por", nombre: "Alejandro T.", monto: "$6,000 MXN", tiempo: "hace 4 minutos" },
+      { texto: "completó su registro por", nombre: "Valeria S.", monto: "$4,000 MXN", tiempo: "hace 2 minutos" },
+      { texto: "recibió su crédito de", nombre: "Luis H.", monto: "$5,000 MXN", tiempo: "hace 5 minutos" }
     ];
 
     let indice = 0;
@@ -252,13 +253,13 @@
       banner.classList.add("oculto");
 
       setTimeout(() => {
-        indice = (indice + 1) % aprobaciones.length;
-        const item = aprobaciones[indice];
-        texto.innerHTML = `<strong>${item.nombre}</strong> ${item.genero} por <span class="monto-destacado">${item.monto}</span> ${item.tiempo}`;
+        indice = (indice + 1) % actividades.length;
+        const item = actividades[indice];
+        texto.innerHTML = `<strong>${item.nombre}</strong> ${item.texto} <span class="monto-destacado">${item.monto}</span> ${item.tiempo}`;
         
         banner.classList.remove("oculto");
       }, 400);
-    }, 7000);
+    }, 5000); // Cambia cada 5 segundos
   </script>
 
 </body>
