@@ -13,9 +13,6 @@
       --card-border: rgba(255, 255, 255, 0.12);
       --text-color: #f3eafa;
       --text-muted: #d0bce6;
-      --accent-color: #00ffcc;
-      --btn-bg-1: linear-gradient(135deg, #7b2cbf, #9d4edd);
-      --btn-bg-2: linear-gradient(135deg, #48cae4, #0077b6);
       --blanco: #ffffff;
     }
 
@@ -52,7 +49,6 @@
       overflow: hidden;
     }
 
-    /* Elemento decorativo de brillo superior */
     .landing-container::before {
       content: '';
       position: absolute;
@@ -87,117 +83,4 @@
     h1 {
       font-size: 2.2rem;
       font-weight: 800;
-      letter-spacing: 1px;
-      margin-bottom: 18px;
-      color: var(--blanco);
-      text-transform: uppercase;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
-
-    .descripcion {
-      font-size: 0.96rem;
-      line-height: 1.6;
-      color: var(--text-muted);
-      margin-bottom: 30px;
-      text-align: left;
-      background: rgba(0, 0, 0, 0.15);
-      padding: 16px 18px;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .botones-container {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .btn-solicitar {
-      display: block;
-      width: 100%;
-      padding: 16px 20px;
-      border-radius: 16px;
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--blanco);
-      text-decoration: none;
-      text-align: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      border: none;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-1 {
-      background: linear-gradient(135deg, #7209b7, #b5179e);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .btn-2 {
-      background: linear-gradient(135deg, #4361ee, #3a0ca3);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .btn-solicitar:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-      opacity: 0.95;
-    }
-
-    .btn-solicitar:active {
-      transform: translateY(-1px);
-    }
-
-    .seguridad {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 0.85rem;
-      color: #b8c1ec;
-      margin-top: 10px;
-      font-weight: 500;
-    }
-
-    footer {
-      margin-top: 24px;
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.4);
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="landing-container">
-    <!-- Icono superior animado -->
-    <div class="logo-icon">
-      💸
-    </div>
-
-    <h1>Créditos</h1>
-
-    <div class="descripcion">
-      Solicita tu crédito sin ningún tipo de pago inicial o anticipado. Dale click al botón <strong>SOLICITAR</strong> en cualquiera de las dos opciones, marca la cantidad que deseas y sigue los pasos. Al final recibirán en pantalla las opciones disponibles para pedir el crédito. ¡MUCHO ÉXITO!
-    </div>
-
-    <div class="botones-container">
-      <!-- Cambia los enlaces "#enlace-opcion-1" por tus links reales de destino -->
-      <a href="https://o.uvixs.com//tr?offer_id=7&aff_id=14" class="btn-solicitar btn-1">SOLICITAR #1</a>
-      <a href="https://o.uvixs.com//tr?offer_id=11&aff_id=14" class="btn-solicitar btn-2">SOLICITAR #2</a>
-    </div>
-
-    <div class="seguridad">
-      <span>🔒</span> Proceso 100% seguro y sin pagos previos.
-    </div>
-  </div>
-
-  <footer>
-    puede solicitar en la dos opciones para aumentar la probabilidad de aprobación 
-  </footer>
-
-</body>
-</html>
+      letter-spacing
