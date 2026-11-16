@@ -313,7 +313,7 @@
       setTimeout(() => {
         toast.classList.remove('toast-loan-enter');
         toast.classList.add('toast-loan-exit');
-      }, 6000);
+      }, 5500);
 
       // Avanzar al siguiente nombre
       indice = (indice + 1) % actividades.length;
@@ -322,7 +322,7 @@
     // Iniciar notificación 5.5 segundos después de cargar y repetir cada 7.5 segundos
     setTimeout(() => {
       mostrarNotificacion();
-      setInterval(mostrarNotificacion, 10000);
+      setInterval(mostrarNotificacion, 9000);
     }, 2000);
   </script>
 
