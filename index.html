@@ -3,270 +3,253 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#2b0d52">
-  <title>Créditos Rápidos y Seguros</title>
-  
+  <title>Préstamos Rápidos en Línea | Aprobación Inmediata</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandPurple: '#6d28d9',
+            brandPurpleDark: '#4c1d95',
+            brandPurpleLight: '#8b5cf6',
+            brandAccent: '#a855f7',
+            brandAccentHover: '#9333ea',
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
   <style>
-    :root {
-      --bg-gradient: linear-gradient(135deg, #1f0838 0%, #3b126b 50%, #5a1fa8 100%);
-      --card-bg: rgba(255, 255, 255, 0.07);
-      --card-border: rgba(255, 255, 255, 0.12);
-      --text-color: #f3eafa;
-      --text-muted: #d0bce6;
-      --blanco: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: var(--bg-gradient);
-      color: var(--text-color);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 50%, #7c3aed 100%);
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
     }
-
-    .landing-container {
-      width: 100%;
-      max-width: 480px;
-      background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--card-border);
-      border-radius: 28px;
-      padding: 36px 28px;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    .card-glass {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
     }
-
-    .landing-container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60%;
-      height: 4px;
-      background: linear-gradient(90deg, transparent, #b24be8, transparent);
-    }
-
-    .logo-icon {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 20px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      animation: flotar 3s ease-in-out infinite;
-    }
-
-    @keyframes flotar {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-      margin-bottom: 18px;
-      color: var(--blanco);
-      text-transform: uppercase;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
-
-    .descripcion {
-      font-size: 0.96rem;
-      line-height: 1.6;
-      color: var(--text-muted);
-      margin-bottom: 22px;
-      text-align: left;
-      background: rgba(0, 0, 0, 0.15);
-      padding: 16px 18px;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .aprobacion-live {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: rgba(0, 255, 136, 0.1);
-      border: 1px solid rgba(0, 255, 136, 0.25);
-      padding: 12px 14px;
-      border-radius: 12px;
-      margin-bottom: 22px;
-      font-size: 0.85rem;
-      line-height: 1.4;
-      color: #e6fff2;
-      transition: opacity 0.4s ease, transform 0.4s ease;
-    }
-
-    .aprobacion-live.oculto {
-      opacity: 0;
-      transform: translateY(-4px);
-    }
-
-    .monto-destacado {
-      color: #00ff88;
-      font-weight: 700;
-    }
-
-    .punto-verde {
-      width: 9px;
-      height: 9px;
-      background-color: #00ff88;
-      border-radius: 50%;
-      flex-shrink: 0;
-      box-shadow: 0 0 8px #00ff88;
-      animation: pulso 1.5s infinite;
-    }
-
-    @keyframes pulso {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
-      70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(0, 255, 136, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
-    }
-
-    .botones-container {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .btn-solicitar {
-      display: block;
-      width: 100%;
-      padding: 16px 20px;
-      border-radius: 16px;
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--blanco);
-      text-decoration: none;
-      text-align: center;
+    .btn-pill {
+      border-radius: 9999px;
+      box-shadow: 0 4px 15px rgba(168, 85, 247, 0.5);
       transition: all 0.3s ease;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      border: none;
+    }
+    .btn-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(168, 85, 247, 0.75);
+    }
+    .pulse-animation {
+      animation: pulse-border 2s infinite;
+    }
+    @keyframes pulse-border {
+      0% {
+        box-shadow: 0 0 0 0 rgba(192, 132, 252, 0.75);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(192, 132, 252, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(192, 132, 252, 0);
+      }
     }
 
-    .btn-1 {
-    background: linear-gradient(135deg, #4361ee, #3a0ca3);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-    .btn-2 {
-    background: linear-gradient(135deg, #7209b7, #b5179e);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-    .btn-solicitar:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-      opacity: 0.95;
+    /* Nueva transición suave y visible (deslizamiento lateral con rebote ligero) */
+    .toast-loan {
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.55s ease;
     }
-
-    .seguridad {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 0.85rem;
-      color: #b8c1ec;
-      margin-top: 10px;
-      font-weight: 500;
+    .toast-loan-enter {
+      transform: translateX(0) scale(1);
+      opacity: 1;
     }
-
-    footer {
-      margin-top: 24px;
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.4);
-      text-align: center;
+    .toast-loan-exit {
+      transform: translateX(-115%) scale(0.96);
+      opacity: 0;
     }
   </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between items-center px-4 py-4 md:py-8 relative overflow-x-hidden">
 
-  <div class="landing-container">
-    <div class="logo-icon">💸</div>
+  <!-- Encabezado / Logo -->
+  <header class="w-full max-w-md flex justify-between items-center py-2 px-2">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md overflow-hidden p-1 border-2 border-purple-200">
+        <div class="w-full h-full rounded-full bg-purple-100 flex items-center justify-center text-brandPurple text-2xl font-bold">
+          💸
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-2xl font-extrabold tracking-tight text-white leading-none">
+          Credi<span class="text-purple-200">Rápido</span>
+        </span>
+        <span class="text-xs text-purple-200 font-medium tracking-wide">Préstamos & Financiamiento</span>
+      </div>
+    </div>
+    
+    <button class="text-white text-2xl focus:outline-none p-2 hover:bg-white/10 rounded-lg transition" aria-label="Menú">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </header>
 
-    <h1>Créditos</h1>
+  <!-- Contenido Principal -->
+  <main class="w-full max-w-md my-auto flex flex-col items-center text-center py-4">
 
-    <div class="descripcion">
-      Solicita tu crédito sin ningún tipo de pago inicial o anticipado. Dale click al botón <strong>SOLICITAR</strong> en cualquiera de las dos opciones, marca la cantidad que deseas y sigue los pasos. Al final recibirán en pantalla las opciones disponibles para pedir el crédito. ¡MUCHO ÉXITO!
+    <!-- Titular Principal de Oferta -->
+    <div class="space-y-3 mb-6">
+      <h1 class="text-2xl md:text-3xl font-extrabold leading-tight text-white tracking-wide">
+        ¡Solicita tu préstamo hoy y recibe aprobación en minutos!
+      </h1>
+      <p class="text-base md:text-lg text-purple-100 font-medium leading-relaxed">
+        Sin aval, sin filas y 100% en línea. Elige el monto que necesitas y recíbelo directamente en tu cuenta bancaria.
+      </p>
     </div>
 
-    <!-- Banner con mezcla de solicitudes y aprobaciones -->
-    <div class="aprobacion-live" id="bannerAprobacion">
-      <span class="punto-verde"></span>
-      <span id="textoAprobacion"><strong>María G.</strong> envió una solicitud por <span class="monto-destacado">$4,500 MXN</span> hace 1 minuto</span>
+    <!-- Tarjeta de Instrucciones y Solicitud -->
+    <div class="w-full card-glass rounded-3xl p-6 md:p-8 shadow-xl text-white relative overflow-hidden">
+      
+      <!-- Insignia explicativa -->
+      <div class="inline-flex items-center gap-2 bg-white/20 px-4 py-1.5 rounded-full text-xs font-semibold mb-4 text-purple-50">
+        <i class="fa-solid fa-circle-check text-emerald-300"></i> Respuesta Inmediata y Segura
+      </div>
+
+      <h2 class="text-xl md:text-2xl font-bold mb-3 leading-snug">
+        ¿Cómo solicitar tu préstamo?
+      </h2>
+
+      <p class="text-sm md:text-base text-purple-100 mb-6 leading-relaxed">
+        Completa tu registro rápido en nuestra plataforma asociada para evaluar tu línea de crédito preaprobada al instante.
+      </p>
+
+      <!-- Pasos simplificados -->
+      <div class="grid grid-cols-3 gap-2 mb-8 text-xs font-medium">
+        <div class="bg-black/15 p-2.5 rounded-2xl flex flex-col items-center">
+          <span class="w-6 h-6 rounded-full bg-white text-brandPurple font-bold flex items-center justify-center mb-1">1</span>
+          <span>Haz clic en Solicitar</span>
+        </div>
+        <div class="bg-black/15 p-2.5 rounded-2xl flex flex-col items-center">
+          <span class="w-6 h-6 rounded-full bg-white text-brandPurple font-bold flex items-center justify-center mb-1">2</span>
+          <span>Envía tus datos</span>
+        </div>
+        <div class="bg-black/15 p-2.5 rounded-2xl flex flex-col items-center">
+          <span class="w-6 h-6 rounded-full bg-white text-brandPurple font-bold flex items-center justify-center mb-1">3</span>
+          <span>Recibe tu dinero</span>
+        </div>
+      </div>
+
+      <!-- BOTÓN ÚNICO DE SOLICITUD -->
+      <div class="space-y-4">
+        <!-- Reemplaza el atributo href por tu enlace real de la oferta de préstamos -->
+        <a href="https://tu-enlace-de-prestamos.com" target="_blank" rel="noopener noreferrer" 
+           class="btn-pill pulse-animation w-full block bg-gradient-to-r from-purple-500 to-fuchsia-500 hover:from-purple-600 hover:to-fuchsia-600 text-white font-extrabold text-lg md:text-xl py-4 px-6 uppercase tracking-wider text-center transition border border-purple-300/40">
+          SOLICITAR PRÉSTAMO
+        </a>
+
+        <p class="text-xs text-purple-200/85">
+          Consulta sin costo ni compromiso. Protección total de tus datos.
+        </p>
+      </div>
+
     </div>
 
-    <div class="botones-container">
-      <a href="https://o.uvixs.com//tr?offer_id=11&aff_id=14" class="btn-solicitar btn-1">SOLICITAR #1</a>
-      <a href="https://o.uvixs.com//tr?offer_id=7&aff_id=14" class="btn-solicitar btn-2">SOLICITAR #2</a>
+    <!-- Garantías / Beneficios rápidos -->
+    <div class="mt-6 flex justify-around w-full text-xs text-purple-100 font-medium">
+      <div class="flex items-center gap-1.5">
+        <i class="fa-solid fa-shield-halved text-white"></i> 100% Seguro
+      </div>
+      <div class="flex items-center gap-1.5">
+        <i class="fa-solid fa-bolt text-white"></i> Depósito Rápido
+      </div>
+      <div class="flex items-center gap-1.5">
+        <i class="fa-solid fa-file-signature text-white"></i> Sin Papeleo
+      </div>
     </div>
 
-    <div class="seguridad">
-      <span>🔒</span> Proceso 100% seguro y sin pagos previos.
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="w-full max-w-md text-center text-xs text-purple-200/70 py-4 pb-20 md:pb-4">
+    <p>© 2026 Portal Financiero & Préstamos en Línea. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- NOTIFICACIÓN FLOTANTE (PRÉSTAMOS APROBADOS / SOLICITUDES ENVIADAS) -->
+  <div id="live-notification" 
+       class="toast-loan fixed bottom-4 left-4 right-4 md:left-6 md:right-auto md:max-w-sm z-50 bg-white/95 backdrop-blur-md text-slate-800 px-4 py-3.5 rounded-2xl shadow-2xl border border-purple-200 flex items-center gap-3.5 toast-loan-exit pointer-events-none">
+    
+    <!-- Punto Verde Parpadeante -->
+    <div class="relative flex h-3.5 w-3.5 shrink-0">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500"></span>
+    </div>
+
+    <!-- Texto Dinámico -->
+    <div class="text-left leading-tight">
+      <p id="notif-text" class="text-xs md:text-sm font-semibold text-slate-800">
+        <span class="font-bold text-slate-900">Diana</span> recibió préstamo aprobado
+      </p>
+      <p id="notif-time" class="text-[11px] font-medium text-emerald-600 mt-0.5">
+        Hace 2 minutos • Solicitud verificada
+      </p>
     </div>
   </div>
 
-  <footer>
-    Recuerda que mientras más solicitudes envíes las posibilidades de ser aprobado aumentan•
-  </footer>
-
+  <!-- Script de rotación de notificaciones -->
   <script>
-    const actividades = [
-      { texto: "envió una solicitud por", nombre: "María G.", monto: "$4,500 MXN", tiempo: "hace 1 minuto" },
-      { texto: "fue aprobado por", nombre: "Carlos R.", monto: "$6,000 MXN", tiempo: "hace unos segundos" },
-      { texto: "inició su trámite por", nombre: "Fernanda L.", monto: "$3,000 MXN", tiempo: "hace 3 minutos" },
-      { texto: "recibió su crédito de", nombre: "Jorge M.", monto: "$5,500 MXN", tiempo: "hace 2 minutos" },
-      { texto: "envió una solicitud por", nombre: "Sofía P.", monto: "$2,500 MXN", tiempo: "hace 30 segundos" },
-      { texto: "fue aprobado por", nombre: "Alejandro T.", monto: "$6,000 MXN", tiempo: "hace 4 minutos" },
-      { texto: "completó su registro por", nombre: "Valeria S.", monto: "$4,000 MXN", tiempo: "hace 2 minutos" },
-      { texto: "envió una solicitud por", nombre: "Marcela V.", monto: "$3,500 MXN", tiempo: "hace 7 minuto" },
-      { texto: "fue aprobado por", nombre: "Carmen B.", monto: "$5,000 MXN", tiempo: "hace unos segundos" },
-      { texto: "inició su trámite por", nombre: "Diana G.", monto: "$3,000 MXN", tiempo: "hace 3 minutos" },
-      { texto: "recibió su crédito de", nombre: "Jhonatan Z.", monto: "$2,500 MXN", tiempo: "hace 6 minutos" },
-      { texto: "envió una solicitud por", nombre: "Solandry P.", monto: "$2,500 MXN", tiempo: "hace 42 segundos" },
-      { texto: "fue aprobada por", nombre: "Alejandra T.", monto: "$2,000 MXN", tiempo: "hace 6 minutos" },
-      { texto: "completó su registro por", nombre: "Sandra S.", monto: "$4,000 MXN", tiempo: "hace 9 minutos" },
-      { texto: "recibió su crédito de", nombre: "Hany H.", monto: "$1,700 MXN", tiempo: "hace 5 minutos" }
+    const notificaciones = [
+      { nombre: "Diana", accion: "recibió préstamo aprobado por $5,000", tiempo: "Hace 2 minutos", estado: "Depósito verificado" },
+      { nombre: "Carlos M.", accion: "envió su solicitud de préstamo", tiempo: "Hace 1 minuto", estado: "En evaluación rápida" },
+      { nombre: "Valeria G.", accion: "obtuvo préstamo aprobado por $8,500", tiempo: "Hace 4 minutos", estado: "Transferencia exitosa" },
+      { nombre: "Jorge L.", accion: "envió su solicitud en línea", tiempo: "Hace 3 minutos", estado: "Preaprobado al instante" },
+      { nombre: "Sofía R.", accion: "recibió préstamo aprobado por $3,500", tiempo: "Hace 6 minutos", estado: "Depósito verificado" },
+      { nombre: "Alejandro T.", accion: "envió su solicitud de crédito", tiempo: "Hace 2 minutos", estado: "Solicitud confirmada" },
+      { nombre: "Fernanda P.", accion: "obtuvo préstamo aprobado por $10,000", tiempo: "Hace 5 minutos", estado: "Transferencia exitosa" },
+      { nombre: "Luis H.", accion: "envió su solicitud de préstamo", tiempo: "Hace 1 minuto", estado: "En evaluación rápida" }
     ];
 
-    let indice = 0;
-    const banner = document.getElementById("bannerAprobacion");
-    const texto = document.getElementById("textoAprobacion");
+    let indiceActual = 0;
+    const toast = document.getElementById('live-notification');
+    const notifText = document.getElementById('notif-text');
+    const notifTime = document.getElementById('notif-time');
 
-    setInterval(() => {
-      banner.classList.add("oculto");
+    function mostrarNotificacion() {
+      const item = notificaciones[indiceActual];
+      
+      // Actualizar textos dinámicos
+      notifText.innerHTML = `<span class="font-bold text-slate-900">${item.nombre}</span> ${item.accion}`;
+      notifTime.textContent = `${item.tiempo} • ${item.estado}`;
 
+      // Animación suave de entrada desde la izquierda
+      toast.classList.remove('toast-loan-exit');
+      toast.classList.add('toast-loan-enter');
+
+      // Ocultar suavemente después de 4.8 segundos
       setTimeout(() => {
-        indice = (indice + 1) % actividades.length;
-        const item = actividades[indice];
-        texto.innerHTML = `<strong>${item.nombre}</strong> ${item.texto} <span class="monto-destacado">${item.monto}</span> ${item.tiempo}`;
-        
-        banner.classList.remove("oculto");
-      }, 400);
-    }, 7000); // Cambia cada 5 segundos
+        toast.classList.remove('toast-loan-enter');
+        toast.classList.add('toast-loan-exit');
+      }, 4800);
+
+      // Avanzar al siguiente elemento
+      indiceActual = (indiceActual + 1) % notificaciones.length;
+    }
+
+    // Mostrar la primera notificación 1.5 segundos después de abrir la página
+    setTimeout(() => {
+      mostrarNotificacion();
+      // Repetir cada 7.5 segundos
+      setInterval(mostrarNotificacion, 7500);
+    }, 1500);
   </script>
 
 </body>
