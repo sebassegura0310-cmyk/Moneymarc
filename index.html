@@ -1,59 +1,95 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#22143f" />
-  <title>Solicita tu crédito</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2b0d52">
+  <title>Créditos Rápidos y Seguros</title>
+  
   <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #1f0838 0%, #3b126b 50%, #5a1fa8 100%);
+      --card-bg: rgba(255, 255, 255, 0.07);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --text-color: #f3eafa;
+      --text-muted: #d0bce6;
+      --blanco: #ffffff;
+    }
+
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-color);
       min-height: 100vh;
-      margin: 0;
-      padding: 40px 20px;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at 15% 10%, #a855f7 0, transparent 30%),
-        radial-gradient(circle at 90% 90%, #6d28d9 0, transparent 35%),
-        linear-gradient(135deg, #17112e, #3b1c68 55%, #241044);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-x: hidden;
       position: relative;
     }
 
-    /* BOTÓN FLOTANTE SUPERIOR IZQUIERDO DE REFERENCIAS CON DESTELLO Y PULSO */
-    .btn-referencias-izq {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 1000;
-      display: inline-flex;
+    .landing-container {
+      width: 100%;
+      max-width: 480px;
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 28px;
+      padding: 36px 28px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .landing-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #b24be8, transparent);
+    }
+
+    /* NUEVO BOTÓN DE REFERENCIAS CON ANIMACIÓN DE DESTELLO Y PULSO */
+    .btn-referencias-glow {
+      display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.85), rgba(109, 40, 217, 0.85));
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 13px 20px;
+      margin-bottom: 22px;
+      background: linear-gradient(135deg, rgba(114, 9, 183, 0.7), rgba(181, 23, 158, 0.7));
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.35);
-      color: #ffffff;
+      color: var(--blanco);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       font-weight: 700;
-      border-radius: 50px;
-      box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4);
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(178, 75, 232, 0.35);
+      position: relative;
       overflow: hidden;
       cursor: pointer;
-      animation: pulso-izq 2.5s infinite ease-in-out;
+      animation: pulso-boton 2.5s infinite ease-in-out;
       transition: all 0.3s ease;
     }
 
-    /* Efecto de destello de luz cruzando el botón izquierdo */
-    .btn-referencias-izq::after {
+    /* Efecto de destello de luz que cruza el botón */
+    .btn-referencias-glow::after {
       content: '';
       position: absolute;
       top: -50%;
@@ -63,246 +99,273 @@
       background: linear-gradient(
         60deg,
         transparent 35%,
-        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0.25) 50%,
         transparent 65%
       );
       transform: rotate(30deg) translateX(-100%);
-      animation: destello-izq 3s infinite;
+      animation: destello-luz 3s infinite;
     }
 
-    @keyframes destello-izq {
+    @keyframes destello-luz {
       0% { transform: rotate(30deg) translateX(-100%); }
       30%, 100% { transform: rotate(30deg) translateX(100%); }
     }
 
-    @keyframes pulso-izq {
-      0%, 100% { transform: scale(1); box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4); }
-      50% { transform: scale(1.03); box-shadow: 0 10px 25px rgba(168, 85, 247, 0.65); }
+    @keyframes pulso-boton {
+      0%, 100% { transform: scale(1); box-shadow: 0 8px 25px rgba(178, 75, 232, 0.35); }
+      50% { transform: scale(1.02); box-shadow: 0 12px 30px rgba(178, 75, 232, 0.6); }
     }
 
-    .btn-referencias-izq:hover {
-      transform: translateY(-2px);
+    .btn-referencias-glow:hover {
       opacity: 0.95;
+      transform: translateY(-2px);
     }
 
-    .card {
-      width: min(100%, 560px);
-      padding: 42px 30px 28px;
-      text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.09);
-      box-shadow: 0 24px 80px rgba(12, 5, 27, 0.4);
-      backdrop-filter: blur(16px);
-      animation: aparecer 700ms ease both;
-    }
-
-    .logo {
-      width: 112px;
-      height: 112px;
-      margin: 0 auto 24px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(255, 255, 255, 0.24);
+    .logo-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.14);
-      font-size: 48px;
-    }
-
-    h1 {
-      margin: 0 0 14px;
-      font-size: clamp(2.2rem, 8vw, 3.4rem);
-      letter-spacing: 0.08em;
-    }
-
-    .description {
-      margin: 0 auto 24px;
-      max-width: 440px;
-      color: #eee7fa;
-      font-size: 1.05rem;
-      line-height: 1.7;
-    }
-
-    /* Banner en vivo de aprobaciones y solicitudes */
-    .aprobacion-live {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      background: rgba(0, 255, 136, 0.1);
-      border: 1px solid rgba(0, 255, 136, 0.25);
-      padding: 12px 14px;
-      border-radius: 12px;
-      margin-bottom: 24px;
-      font-size: 0.9rem;
-      line-height: 1.4;
-      color: #e6fff2;
-      transition: opacity 0.4s ease, transform 0.4s ease;
+      font-size: 2.5rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      animation: flotar 3s ease-in-out infinite;
     }
 
-    .aprobacion-live.oculto {
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+      color: var(--blanco);
+      text-transform: uppercase;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .descripcion {
+      font-size: 0.96rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+      text-align: left;
+      background: rgba(0, 0, 0, 0.15);
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* CAJA ESTÁTICA CON TAMAÑO FIJO */
+    .toast-inline {
+      width: 100%;
+      height: 54px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #1f0838;
+      padding: 8px 14px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
       opacity: 0;
-      transform: translateY(-4px);
+      transition: opacity 0.5s ease;
+      text-align: left;
+      overflow: hidden;
+    }
+
+    .toast-inline.visible {
+      opacity: 1;
     }
 
     .monto-destacado {
-      color: #00ff88;
+      color: #059669;
       font-weight: 700;
     }
 
     .punto-verde {
-      width: 9px;
-      height: 9px;
+      position: relative;
+      width: 8px;
+      height: 8px;
       background-color: #00ff88;
       border-radius: 50%;
       flex-shrink: 0;
-      box-shadow: 0 0 8px #00ff88;
-      animation: pulso 1.5s infinite;
+      box-shadow: 0 0 6px #00ff88;
     }
 
-    @keyframes pulso {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
-      70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(0, 255, 136, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+    .punto-verde::after {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      border-radius: 50%;
+      border: 2px solid #00ff88;
+      animation: pulso-radar 1.5s infinite;
     }
 
-    .buttons {
-      display: grid;
-      gap: 14px;
+    @keyframes pulso-radar {
+      0% { transform: scale(0.8); opacity: 1; }
+      70% { transform: scale(2); opacity: 0; }
+      100% { transform: scale(0.8); opacity: 0; }
     }
 
-    .button {
-      position: relative;
-      overflow: hidden;
+    .botones-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .btn-solicitar {
       display: block;
-      padding: 17px 20px;
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      border-radius: 15px;
-      color: #fff;
-      background: linear-gradient(100deg, #a855f7, #7c3aed, #6d28d9);
-      background-size: 200% 200%;
-      box-shadow: 0 10px 26px rgba(109, 40, 217, 0.35);
-      font-size: 1rem;
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 16px;
       font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--blanco);
       text-decoration: none;
-      transition: transform 180ms ease, box-shadow 180ms ease;
-      animation: brillo 5s ease infinite;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      border: none;
     }
 
-    .button:hover {
-      transform: translateY(-3px) scale(1.01);
-      box-shadow: 0 15px 32px rgba(168, 85, 247, 0.45);
+    .btn-2 {
+      background: linear-gradient(135deg, #4361ee, #3a0ca3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .button:active {
-      transform: scale(0.98);
+    .btn-1 {
+      background: linear-gradient(135deg, #7209b7, #b5179e);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .button:focus-visible {
-      outline: 3px solid #fff;
-      outline-offset: 4px;
+    .btn-solicitar:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+      opacity: 0.95;
+    }
+
+    .seguridad {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: #b8c1ec;
+      margin-top: 10px;
+      font-weight: 500;
     }
 
     footer {
-      margin-top: 26px;
-      color: #d8c9ef;
-      font-size: 0.85rem;
-    }
-
-    @keyframes brillo {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-
-    @keyframes aparecer {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-      }
+      margin-top: 24px;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.4);
+      text-align: center;
     }
   </style>
 </head>
-
 <body>
 
-  <!-- BOTÓN SUPERIOR IZQUIERDO DE REFERENCIAS -->
-  <a href="referencias.html" class="btn-referencias-izq">
-    <span>⭐</span> Referencias
-  </a>
+  <div class="landing-container">
+    
+    <!-- BOTÓN DE REFERENCIAS MEJORADO (DENTRO DE LA TARJETA CON DESTELLO Y PULSO) -->
+    <a href="referencias.html" class="btn-referencias-glow">
+      <span>⭐</span> Ver Opiniones y Referencias de Clientes <span>➔</span>
+    </a>
 
-  <main class="card">
-    <div class="logo" aria-hidden="true">💸</div>
+    <div class="logo-icon">💸</div>
 
-    <h1>CRÉDITOS</h1>
+    <h1>Créditos</h1>
 
-    <p class="description">
-Solicita tu crédito sin ningún tipo de inicial o anticipado, Dale click al botón SOLICITAR en cualquier de las dos opciones, marca la cantidad que deseas y sigue los pasos. Al final recibirán en pantalla las opciones disponibles para pedir el crédito. ¡MUCHO ÉXITO!.
-    </p>
-
-    <!-- Notificación animada en tiempo real -->
-    <div class="aprobacion-live" id="bannerAprobacion">
-      <span class="punto-verde"></span>
-      <span id="textoAprobacion"><strong>María G.</strong> envió una solicitud por <span class="monto-destacado">$4,500 MXN</span> hace 1 minuto</span>
+    <div class="descripcion">
+      Solicita tu crédito sin ningún tipo de pago inicial o anticipado. Dale click al botón <strong>SOLICITAR</strong> en cualquiera de las dos opciones, marca la cantidad que deseas y sigue los pasos. Al final recibirán en pantalla las opciones disponibles para pedir el crédito. ¡MUCHO ÉXITO!
     </div>
 
-    <nav class="buttons" aria-label="Opciones para solicitar">
-      <!-- Cambia cada URL por tu enlace -->
-      <a class="button" href="https://o.uvixs.com//tr?offer_id=7&aff_id=14"
-         target="_blank" rel="noopener noreferrer">
-        SOLICITAR #1
-      </a>
+    <!-- NOTIFICACIÓN ESTÁTICA CON TAMAÑO FIJO -->
+    <div id="live-notification" class="toast-inline">
+      <div class="punto-verde"></div>
+      <div style="line-height: 1.25; width: 100%;">
+        <p id="notif-text" style="font-size: 0.78rem; font-weight: 600; color: #1f0838; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          <strong>María G.</strong> envió una solicitud por <span class="monto-destacado">$4,500 MXN</span>
+        </p>
+        <p id="notif-time" style="font-size: 0.65rem; color: #059669; font-weight: 500; margin-top: 2px;">
+          hace 1 minuto • Solicitud verificada
+        </p>
+      </div>
+    </div>
 
-      <a class="button" href="https://o.uvixs.com//tr?offer_id=10&aff_id=14"
-         target="_blank" rel="noopener noreferrer">
-        SOLICITAR #2
-      </a>
-    </nav>
+    <div class="botones-container">
+      <a href="https://o.uvixs.com//tr?offer_id=7&aff_id=14" class="btn-solicitar btn-1">SOLICITAR #1</a>
+      <a href="https://o.uvixs.com//tr?offer_id=10&aff_id=14" class="btn-solicitar btn-2">SOLICITAR #2</a>
+    </div>
 
-    <footer>
-      🔒 Proceso 100% seguro y sin pagos previos.
-    </footer>
-  </main>
+    <div class="seguridad">
+      <span>🔒</span> Proceso 100% seguro y sin pagos previos.
+    </div>
+  </div>
+
+  <footer>
+    Recuerda que mientras más solicitudes envíes las posibilidades de ser aprobado aumentan•
+  </footer>
 
   <script>
     const actividades = [
-      { texto: "envió una solicitud por", nombre: "Mariana H.", monto: "$2,700 MXN", tiempo: "hace 1 minuto" },
-      { texto: "fue aprobado por", nombre: "Rodolfo R.", monto: "$2,000 MXN", tiempo: "hace unos segundos" },
-      { texto: "inició su trámite por", nombre: "Francisco G.", monto: "$5,000 MXN", tiempo: "hace 3 minutos" },
-      { texto: "recibió su crédito de", nombre: "Amanda D.", monto: "$2,500 MXN", tiempo: "hace 2 minutos" },
-      { texto: "envió una solicitud por", nombre: "Keyla T.", monto: "$3,000 MXN", tiempo: "hace 30 segundos" },
-      { texto: "fue aprobado por", nombre: "Alex H.", monto: "$6,000 MXN", tiempo: "hace 4 minutos" },
-      { texto: "completó su registro por", nombre: "Alberto P.", monto: "$4,000 MXN", tiempo: "hace 2 minutos" },
-      { texto: "envió una solicitud por", nombre: "Martina Z.", monto: "$1,700 MXN", tiempo: "hace 7 minuto" },
-      { texto: "fue aprobado por", nombre: "Carolina M.", monto: "$5,000 MXN", tiempo: "hace unos segundos" },
-      { texto: "inició su trámite por", nombre: "Diana G.", monto: "$2,000 MXN", tiempo: "hace 3 minutos" },
-      { texto: "recibió su crédito de", nombre: "Jairo K.", monto: "$3,500 MXN", tiempo: "hace 6 minutos" },
-      { texto: "envió una solicitud por", nombre: "Paula S.", monto: "$4,500 MXN", tiempo: "hace 42 segundos" },
-      { texto: "fue aprobada por", nombre: "Lina T.", monto: "$2,000 MXN", tiempo: "hace 6 minutos" },
-      { texto: "completó su registro por", nombre: "Marcelo C.", monto: "$3,000 MXN", tiempo: "hace 9 minutos" },
-      { texto: "recibió su crédito de", nombre: "Elver G.", monto: "$2,700 MXN", tiempo: "hace 5 minutos" }
+      { texto: "envió una solicitud por", nombre: "Martha B.", monto: "$3,500 MXN", tiempo: "hace 1 minuto" },
+      { texto: "fue aprobado por", nombre: "Roberto M.", monto: "$6,000 MXN", tiempo: "hace unos segundos" },
+      { texto: "inició su trámite por", nombre: "Carmen L.", monto: "$3,000 MXN", tiempo: "hace 3 minutos" },
+      { texto: "recibió su crédito de", nombre: "Ivána P.", monto: "$5,500 MXN", tiempo: "hace 2 minutos" },
+      { texto: "envió una solicitud por", nombre: "Arturo Z.", monto: "$2,500 MXN", tiempo: "hace 30 segundos" },
+      { texto: "fue aprobada por", nombre: "Judith F.", monto: "$6,000 MXN", tiempo: "hace 4 minutos" },
+      { texto: "completó su registro por", nombre: "Ana H.", monto: "$4,000 MXN", tiempo: "hace 2 minutos" },
+      { texto: "envió una solicitud por", nombre: "Marcela V.", monto: "$3,500 MXN", tiempo: "hace 7 minutos" },
+      { texto: "fue aprobada por", nombre: "Darley G.", monto: "$5,000 MXN", tiempo: "hace unos segundos" },
+      { texto: "inició su trámite por", nombre: "Dina F.", monto: "$3,000 MXN", tiempo: "hace 3 minutos" },
+      { texto: "recibió su crédito de", nombre: "Jhonatan Z.", monto: "$2,500 MXN", tiempo: "hace 6 minutos" },
+      { texto: "envió una solicitud por", nombre: "Irving P.", monto: "$2,500 MXN", tiempo: "hace 42 segundos" },
+      { texto: "fue aprobada por", nombre: "Alexandra T.", monto: "$2,000 MXN", tiempo: "hace 6 minutos" },
+      { texto: "completó su registro por", nombre: "Samantha M.", monto: "$4,000 MXN", tiempo: "hace 9 minutos" },
+      { texto: "recibió su crédito de", nombre: "Angie H.", monto: "$1,700 MXN", tiempo: "hace 5 minutos" }
     ];
 
     let indice = 0;
-    const banner = document.getElementById("bannerAprobacion");
-    const texto = document.getElementById("textoAprobacion");
+    const toast = document.getElementById("live-notification");
+    const notifText = document.getElementById("notif-text");
+    const notifTime = document.getElementById("notif-time");
 
-    setInterval(() => {
-      banner.classList.add("oculto");
+    function mostrarNotificacion() {
+      toast.classList.remove('visible');
 
       setTimeout(() => {
-        indice = (indice + 1) % actividades.length;
         const item = actividades[indice];
-        texto.innerHTML = `<strong>${item.nombre}</strong> ${item.texto} <span class="monto-destacado">${item.monto}</span> ${item.tiempo}`;
-        
-        banner.classList.remove("oculto");
-      }, 600);
-    }, 8000);
+        notifText.innerHTML = `<strong>${item.nombre}</strong> ${item.texto} <span class="monto-destacado">${item.monto}</span>`;
+        notifTime.textContent = `${item.tiempo} • Solicitud verificada`;
+
+        toast.classList.add('visible');
+        indice = (indice + 1) % actividades.length;
+      }, 1500);
+    }
+
+    setTimeout(() => {
+      mostrarNotificacion();
+      setInterval(mostrarNotificacion, 9000);
+    }, 300);
   </script>
+
 </body>
 </html>
